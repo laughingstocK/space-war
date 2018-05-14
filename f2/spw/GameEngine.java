@@ -13,7 +13,7 @@ import javax.swing.Timer;
 
 public class GameEngine implements KeyListener, GameReporter {
 	GamePanel gp;
-
+	Sound sound = new Sound();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Coin> coins = new ArrayList<Coin>();
 	private SpaceShip v;
@@ -140,11 +140,13 @@ public class GameEngine implements KeyListener, GameReporter {
 		for (Coin c : coins) {
 			cr = c.getRectangle();
 			if (cr.intersects(vr)) {
+				sound.playSound();
 				score += 300;
 				return;
 			}
 
 			if (cr.intersects(vr2)) {
+				sound.playSound();
 				score2 += 300;
 				return;
 			}
@@ -198,4 +200,6 @@ public class GameEngine implements KeyListener, GameReporter {
 	public void keyTyped(KeyEvent e) {
 		// do nothing
 	}
+
+	
 }
