@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 public class SpaceShip extends Sprite{
 
 	int step = 8;
+	boolean isAlive = true;
 	Color color;
 	public SpaceShip(int x, int y, int width, int height,Color color) {
 		super(x, y, width, height);
@@ -17,6 +18,10 @@ public class SpaceShip extends Sprite{
 		
 		g.fillRect(x, y, width, height);
 		g.setColor(color);
+	}
+
+	public void die(){
+		isAlive = false;
 	}
 
 	public void move(int direction){

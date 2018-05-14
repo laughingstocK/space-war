@@ -19,7 +19,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	private ArrayList<Coin> coins = new ArrayList<Coin>();
 	private SpaceShip v;
 	private SpaceShip v2;	
-	
+	private int x;
 	private Timer timer;
 	private int a = 0;
 	private long score = 0;
@@ -85,7 +85,10 @@ public class GameEngine implements KeyListener, GameReporter{
 				if(!e.isAlive()){
 					e_iter.remove();
 					gp.sprites.remove(e);
-					score += 100;
+					if(v.isAlive){
+						score += 100;
+					}
+						
 					score2 += 100;
 				}
 	
@@ -121,7 +124,8 @@ public class GameEngine implements KeyListener, GameReporter{
 		for(Enemy e : enemies){
 			er = e.getRectangle();
 			if(er.intersects(vr)){
-				gp.sprites.remove(vr);
+				gp.sprites.remove(v);
+				v.isAlive = false;
 				return;
 			}
 			if(er.intersects(vr2)){
